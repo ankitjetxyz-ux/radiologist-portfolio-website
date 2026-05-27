@@ -1,0 +1,24 @@
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/launch.json
+
+# Python
+__pycache__/
+*.py[cod]
+.Python
+.venv/
+venv/
+
+# HTTrack / mirrored site artifacts (keep source HTML/CSS/JS, ignore caches/logs)
+**/hts-cache/
+**/hts-log.txt
+**/*.whtt
+
+# Local servers / logs
+*.log
