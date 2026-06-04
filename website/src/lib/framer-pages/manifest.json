@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "index",
+    "route": "/",
+    "file": "index.json"
+  },
+  {
+    "slug": "about",
+    "route": "/about",
+    "file": "about.json"
+  },
+  {
+    "slug": "iphone-15",
+    "route": "/work/iphone-15",
+    "file": "iphone-15.json"
+  },
+  {
+    "slug": "unsweetned",
+    "route": "/work/unsweetned",
+    "file": "unsweetned.json"
+  },
+  {
+    "slug": "actr-acre",
+    "route": "/work/actr-acre",
+    "file": "actr-acre.json"
+  },
+  {
+    "slug": "editorial",
+    "route": "/work/editorial",
+    "file": "editorial.json"
+  }
+]

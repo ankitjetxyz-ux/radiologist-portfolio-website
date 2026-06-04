@@ -1,0 +1,15 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Hide Framer marketing badge injected at runtime */
+#__framer-badge-container,
+.__framer-badge,
+a.__framer-badge {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+}

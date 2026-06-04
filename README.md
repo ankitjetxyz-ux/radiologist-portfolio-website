@@ -1,21 +1,62 @@
-Vandan Distributors — Static Portfolio
+# Vandan Distributors — Website
 
-This folder contains a single-page static portfolio site (HTML/CSS/JS).
+Production website for **Vandan Distributors** (radiology print & imaging workflow materials).
 
-Quick local preview:
-1. Open `d:\project\vandan\index.html` in your browser.
+Built with **Next.js + React**, using the Framer “Sealed Edition” UI layout and Vandan business content.
 
-Production export (Windows PowerShell):
+## Folder layout
 
-```powershell
-# Creates d:\project\vandan-deploy.zip containing the site
-powershell -Command "Compress-Archive -Path 'd:\project\vandan\*' -DestinationPath 'd:\project\vandan-deploy.zip' -Force"
+```
+project3/
+├── website/          ← Main app (run & deploy this)
+│   ├── src/
+│   │   ├── app/          Routes (/, /about, /work/*)
+│   │   ├── components/   Framer page shell
+│   │   ├── content/      Business copy & contact info
+│   │   └── lib/          Content patching + extracted Framer HTML
+│   ├── public/images/    Site images
+│   └── scripts/          Re-extract from backup (optional)
+└── backup/           ← Legacy sources (archived, not used at runtime)
 ```
 
-Hosting suggestions:
-- Any static host will work (Netlify, Vercel, GitHub Pages, S3 + CloudFront).
-- For best performance, replace the hero image with an optimized WebP at multiple sizes and serve via CDN.
+## Quick start
 
-Next steps I can do for you:
-- Replace the hero image with a provided file and optimize (resize + WebP).
-- Deploy to a host (Netlify/Vercel) and configure a simple CI workflow.
+```powershell
+cd website
+npm install
+npm run dev
+```
+
+Open **http://localhost:3000**
+
+## Production
+
+```powershell
+cd website
+npm run build
+npm start
+```
+
+## Edit content
+
+Update **`website/src/content/site.ts`** — brand name, hero text, contact details, portfolio labels, etc.
+
+## Re-sync Framer HTML from backup
+
+Only needed if you change files under `backup/framer-mirror/`:
+
+```powershell
+cd website
+npm run prepare:framer
+```
+
+## Pages
+
+| URL | Description |
+|-----|-------------|
+| `/` | Home |
+| `/about` | Why Us / services |
+| `/work/iphone-15` | Portfolio item |
+| `/work/unsweetned` | Portfolio item |
+| `/work/actr-acre` | Portfolio item |
+| `/work/editorial` | Portfolio item |

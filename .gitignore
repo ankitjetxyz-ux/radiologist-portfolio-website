@@ -15,10 +15,21 @@ __pycache__/
 .venv/
 venv/
 
-# HTTrack / mirrored site artifacts (keep source HTML/CSS/JS, ignore caches/logs)
+# Node / Next.js
+node_modules/
+.next/
+out/
+
+# HTTrack / mirror artifacts
 **/hts-cache/
 **/hts-log.txt
 **/*.whtt
 
-# Local servers / logs
+# Backup archives (large zips)
+backup/**/*.zip
+
+# Nested git repos (should not exist in backup)
+**/.git/
+
+# Logs
 *.log
