@@ -1,85 +1,111 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Autoplay from "embla-carousel-autoplay";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  MessageCircle,
+  Mail,
+  Phone,
+  ChevronRight,
+} from "lucide-react";
 import { site } from "@/content/site";
+import { AmbientBackground } from "@/components/AmbientBackground";
+import { PremiumRotatingRing } from "@/components/PremiumRotatingRing";
+import { ImageMarquee } from "@/components/ImageMarquee";
+import { ProcessJourney } from "@/components/ProcessJourney";
+import { WhyUsSection } from "@/components/WhyUsSection";
+import { SectionHeading } from "@/components/SectionHeading";
+import { FadeIn, StaggerGrid, StaggerItem } from "@/components/FadeIn";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from "@/components/ui/carousel";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { cn } from "@/lib/utils";
 
 type MedicalSitePageProps = {
   variant?: "home" | "about";
 };
 
+const heroSlides = [
+  { image: "/images/radiology/rad-03-mri-wide.png", alt: "MRI scanner room diagnostics" },
+  { image: "/images/radiology/rad-01-ct-scanner-room.png", alt: "CT scanner room diagnostics" },
+  { image: "/images/radiology/rad-10-blue-medical-film.png", alt: "Blue medical printing film stack" },
+  { image: "/images/radiology/rad-09-imaging-control.png", alt: "Medical imaging workflow environment" },
+  { image: "/images/radiology/rad-12-spine-mri.png", alt: "Spine MRI diagnostic imaging" },
+  { image: "/images/radiology/rad-11-hospital-radiology.png", alt: "Hospital radiology department" },
+];
+
+const productCards = [
+  {
+    title: "MRI Films",
+    description: "Dry imaging film featuring high spatial resolution and optimal clarity for soft-tissue diagnostics.",
+    image: "/images/radiology/rad-04-print-films.png",
+    alt: "MRI Films",
+  },
+  {
+    title: "CT Scan Films",
+    description: "Consistent grayscale reproduction, low fog rates, and reliable output for heavy scanning schedules.",
+    image: "/images/radiology/rad-10-blue-medical-film.png",
+    alt: "CT Scan Films",
+  },
+  {
+    title: "X-Ray Films",
+    description: "Diagnostic-grade dry laser imaging film providing high contrast, durable bases, and sharp bone details.",
+    image: "/images/radiology/rad-02-xray-lightbox.png",
+    alt: "X-Ray Films",
+  },
+];
+
+const industries = [
+  { title: "Hospitals", emoji: "🏥", image: "/images/radiology/rad-11-hospital-radiology.png" },
+  { title: "Diagnostic Centers", emoji: "🔬", image: "/images/radiology/rad-05-diagnostic-lobby.png" },
+  { title: "Radiology Clinics", emoji: "🧠", image: "/images/radiology/rad-06-radiologist-desk.png" },
+  { title: "Medical Distributors", emoji: "📦", image: "/images/radiology/rad-26-imaging-supplies.png" },
+];
+
+
+const brands = ["Fuji", "Agfa", "Carestream", "Konica", "Sony"] as const;
+type BrandName = (typeof brands)[number];
+
+const heroStats = [
+  { value: "2015", label: "Operating Since" },
+  { value: "5+", label: "Imager Brands" },
+  { value: "Gujarat", label: "Pan-State Supply" },
+];
+
 export function MedicalSitePage({ variant = "home" }: MedicalSitePageProps) {
-  // Hero slider state
-  const heroSlides = [
-    {
-      image: "/images/radiology/rad-03-mri-wide.png",
-      alt: "MRI scanner room diagnostics",
-    },
-    {
-      image: "/images/radiology/rad-01-ct-scanner-room.png",
-      alt: "CT scanner room diagnostics",
-    },
-    {
-      image: "/images/radiology/rad-10-blue-medical-film.png",
-      alt: "Blue medical printing film stack",
-    },
-    {
-      image: "/images/radiology/rad-09-imaging-control.png",
-      alt: "Medical imaging workflow environment",
-    },
-  ];
-  const [activeSlide, setActiveSlide] = useState(0);
-
-  // Auto transition hero slides
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [heroSlides.length]);
-
-  // Compatibility finder state
-  const brands = ["Fuji", "Agfa", "Carestream", "Konica", "Sony"] as const;
-  type BrandName = (typeof brands)[number];
   const [selectedBrand, setSelectedBrand] = useState<BrandName>("Fuji");
-
-  // Gallery Modal state
   type GalleryProduct = (typeof site.galleryProducts)[number];
   const [activeProduct, setActiveProduct] = useState<GalleryProduct | null>(null);
-
-  // Floating Hub state
   const [isHubActive, setIsHubActive] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  // Scroll animation observer
-  useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.1,
-    };
-
-    const handleIntersect = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(handleIntersect, observerOptions);
-    const sections = document.querySelectorAll(".fade-in-section");
-    sections.forEach((section) => observer.observe(section));
-
-    return () => {
-      sections.forEach((section) => observer.unobserve(section));
-    };
+  React.useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 48);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // WhatsApp prefilled message utility
-  const getWhatsAppLink = (message: string) => {
-    return `https://api.whatsapp.com/send?phone=${site.brand.whatsappNumber}&text=${encodeURIComponent(message)}`;
-  };
+  const getWhatsAppLink = (message: string) =>
+    `https://api.whatsapp.com/send?phone=${site.brand.whatsappNumber}&text=${encodeURIComponent(message)}`;
 
   const defaultHeroWhatsApp = getWhatsAppLink(
     "Hello,\nI would like to know more about your MRI/CT scan printing materials."
@@ -87,8 +113,15 @@ export function MedicalSitePage({ variant = "home" }: MedicalSitePageProps) {
 
   return (
     <div className="medical-site">
+      <AmbientBackground />
+
       {/* Sticky Header */}
-      <header className="medical-header">
+      <motion.header
+        className={cn("medical-header", scrolled && "medical-header--scrolled")}
+        initial={false}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      >
         <Link className="medical-brand" href="/">
           <Image src={site.brand.logo} alt="Vandan Distributors" width={44} height={44} priority />
           <span>
@@ -106,377 +139,469 @@ export function MedicalSitePage({ variant = "home" }: MedicalSitePageProps) {
           <a href="#process">Process</a>
         </nav>
 
-        <a className="medical-header__cta" href={defaultHeroWhatsApp} target="_blank" rel="noreferrer">
-          📱 Consult on WhatsApp
-        </a>
-      </header>
+        <Button
+          render={
+            <a href={defaultHeroWhatsApp} target="_blank" rel="noreferrer">
+              <MessageCircle className="size-4" data-icon="inline-start" />
+              Consult on WhatsApp
+            </a>
+          }
+          size="lg"
+          className="cursor-pointer bg-[#25d366] text-white shadow-lg shadow-[#25d366]/25 hover:bg-[#20ba56]"
+        />
+      </motion.header>
 
       {/* Hero Section */}
       <section className="medical-hero">
-        <div className="medical-hero__content">
-          <p className="medical-eyebrow">MRI • CT • X‑Ray Printing Solutions</p>
-          <h1>Precision Imaging Films for Accurate Diagnostics</h1>
+        <motion.div
+          className="medical-hero__content"
+          initial={false}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <h1 className="hero-title">
+            <motion.span
+              initial={false}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="hero-title__line"
+            >
+              Precision Imaging Films
+            </motion.span>
+            <motion.span
+              initial={false}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.22 }}
+              className="hero-title__line"
+            >
+              for Accurate Diagnostics
+            </motion.span>
+          </h1>
           <p className="medical-lede">
-            High-contrast diagnostic films and consumables for clinical imaging departments. Delivering reliable results and seamless vendor support.
+            High-contrast diagnostic films and consumables for clinical imaging departments. Delivering reliable
+            results and seamless vendor support.
           </p>
 
           <div className="medical-hero__actions">
-            <a className="medical-button medical-button--primary" href={defaultHeroWhatsApp} target="_blank" rel="noreferrer">
-              📱 Consult on WhatsApp
-            </a>
-            <a className="medical-button medical-button--ghost" href={site.brand.emailHref}>
-              📧 Email Us
-            </a>
+            <Button
+              render={
+                <a href={defaultHeroWhatsApp} target="_blank" rel="noreferrer">
+                  <MessageCircle className="size-4" data-icon="inline-start" />
+                  Consult on WhatsApp
+                </a>
+              }
+              size="lg"
+              className="min-h-12 min-w-44 cursor-pointer bg-[#25d366] text-base text-white shadow-lg shadow-[#25d366]/25 hover:bg-[#20ba56]"
+            />
+            <Button
+              render={
+                <a href={site.brand.emailHref}>
+                  <Mail className="size-4" data-icon="inline-start" />
+                  Email Us
+                </a>
+              }
+              variant="outline"
+              size="lg"
+              className="min-h-12 min-w-36 cursor-pointer text-base backdrop-blur-sm"
+            />
           </div>
-        </div>
 
-        {/* Hero Slide Show */}
-        <div className="medical-hero__visual">
-          <div className="medical-hero__slider-container">
-            {heroSlides.map((slide, idx) => (
-              <div key={idx} className={`medical-hero__slide ${idx === activeSlide ? "active" : ""}`}>
-                <Image src={slide.image} alt={slide.alt} fill sizes="(max-width: 1024px) 100vw, 45vw" priority={idx === 0} />
+          <motion.div
+            className="hero-stats"
+            initial={false}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.45 }}
+          >
+            {heroStats.map((stat) => (
+              <div key={stat.label} className="hero-stat">
+                <strong>{stat.value}</strong>
+                <span>{stat.label}</span>
               </div>
             ))}
-          </div>
-          <div className="medical-hero__slider-nav">
-            {heroSlides.map((_, idx) => (
-              <span
-                key={idx}
-                className={`medical-hero__dot ${idx === activeSlide ? "active" : ""}`}
-                onClick={() => setActiveSlide(idx)}
-                role="button"
-                aria-label={`Slide ${idx + 1}`}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+          </motion.div>
+        </motion.div>
 
-      {/* Section 2: What We Offer */}
-      <section className="medical-section fade-in-section" id="what-we-offer">
-        <div className="medical-section__heading">
-          <p className="medical-eyebrow">What We Offer</p>
-          <h2>Core medical printing consumables</h2>
-          <p>Durable grayscale film products designed to align with professional diagnostic requirements.</p>
-        </div>
-
-        <div className="medical-products">
-          <article className="medical-product-card">
-            <div className="medical-product-card__media">
-              <Image src="/images/radiology/rad-04-print-films.png" alt="MRI Films" fill sizes="(max-width: 768px) 100vw, 30vw" />
-            </div>
-            <h3>MRI Films</h3>
-            <p>Dry imaging film featuring high spatial resolution and optimal clarity for soft-tissue diagnostics.</p>
-            <a href="#compatibility" className="medical-button medical-button--ghost">
-              View Details
-            </a>
-          </article>
-
-          <article className="medical-product-card">
-            <div className="medical-product-card__media">
-              <Image src="/images/radiology/rad-10-blue-medical-film.png" alt="CT Scan Films" fill sizes="(max-width: 768px) 100vw, 30vw" />
-            </div>
-            <h3>CT Scan Films</h3>
-            <p>Consistent grayscale reproduction, low fog rates, and reliable output for heavy scanning schedules.</p>
-            <a href="#compatibility" className="medical-button medical-button--ghost">
-              View Details
-            </a>
-          </article>
-
-          <article className="medical-product-card">
-            <div className="medical-product-card__media">
-              <Image src="/images/radiology/rad-02-xray-lightbox.png" alt="X-Ray Films" fill sizes="(max-width: 768px) 100vw, 30vw" />
-            </div>
-            <h3>X-Ray Films</h3>
-            <p>Diagnostic-grade dry laser imaging film providing high contrast, durable bases, and sharp bone details.</p>
-            <a href="#compatibility" className="medical-button medical-button--ghost">
-              View Details
-            </a>
-          </article>
-        </div>
-      </section>
-
-      {/* Section 3: Why Professionals Choose Us */}
-      <section className="medical-section fade-in-section" id="why-us">
-        <div className="medical-section__heading">
-          <p className="medical-eyebrow">Why Professionals Choose Us</p>
-          <h2>Strict diagnostic standards</h2>
-          <p>Delivering consistent print behavior and supportive logistical workflows directly to clinical teams.</p>
-        </div>
-
-        <div className="medical-features">
-          <div className="medical-feature-card">
-            <div className="medical-feature-icon">✓</div>
-            <span className="medical-feature-text">Premium Quality</span>
-          </div>
-          <div className="medical-feature-card">
-            <div className="medical-feature-icon">✓</div>
-            <span className="medical-feature-text">Fast Delivery</span>
-          </div>
-          <div className="medical-feature-card">
-            <div className="medical-feature-icon">✓</div>
-            <span className="medical-feature-text">Bulk Supply</span>
-          </div>
-          <div className="medical-feature-card">
-            <div className="medical-feature-icon">✓</div>
-            <span className="medical-feature-text">Technical Support</span>
-          </div>
-          <div className="medical-feature-card">
-            <div className="medical-feature-icon">✓</div>
-            <span className="medical-feature-text">Consistent Results</span>
-          </div>
-          <div className="medical-feature-card">
-            <div className="medical-feature-icon">✓</div>
-            <span className="medical-feature-text">Trusted by Clinics</span>
-          </div>
-        </div>
-      </section>
-
-      {/* Standout Feature: Film Compatibility Finder */}
-      <section className="medical-section fade-in-section" id="compatibility">
-        <div className="medical-section__heading">
-          <p className="medical-eyebrow">Film Compatibility Finder</p>
-          <h2>Find the correct film for your imager</h2>
-          <p>Select your print manufacturer below to verify compatible films, print sizes, and performance details instantly.</p>
-        </div>
-
-        <div className="compatibility-finder">
-          <div className="compatibility-finder__selector">
-            {brands.map((brand) => (
-              <button
-                key={brand}
-                className={`compatibility-brand-btn ${selectedBrand === brand ? "active" : ""}`}
-                onClick={() => setSelectedBrand(brand)}
-              >
-                {brand}
-              </button>
-            ))}
-          </div>
-
-          <div className="compatibility-results">
-            <div className="compatibility-row header">
-              <div>Imager Model</div>
-              <div>Compatible Film Type</div>
-              <div>Available Sizes</div>
-              <div>Technical Specifications</div>
-            </div>
-            {site.compatibilityData[selectedBrand].map((row, idx) => (
-              <div key={idx} className="compatibility-row">
-                <div className="compat-printer" data-label="Imager Model">
-                  {row.printer}
-                </div>
-                <div className="compat-film" data-label="Compatible Film Type">
-                  {row.films.map((film, fIdx) => (
-                    <span key={fIdx} className="compat-film-tag">
-                      {film}
-                    </span>
-                  ))}
-                </div>
-                <div className="compat-sizes" data-label="Available Sizes">
-                  {row.sizes.map((size, sIdx) => (
-                    <span key={sIdx} className="compat-size-tag">
-                      {size}
-                    </span>
-                  ))}
-                </div>
-                <div className="compat-spec" data-label="Technical Specifications">
-                  {row.spec}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="compatibility-finder__footer">
-            <p>
-              Don't see your specific printer listed here? We support a wide range of legacy and modern thermal imagers. Reach out to our technical team to verify compatibility.
-            </p>
-            <a
-              className="medical-button medical-button--primary"
-              href={getWhatsAppLink(`Hello, I would like to verify film compatibility for my ${selectedBrand} imager.`)}
-              target="_blank"
-              rel="noreferrer"
+        <motion.div
+          className="medical-hero__visual"
+          initial={false}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="hero-carousel-frame">
+            <Carousel
+              opts={{ loop: true }}
+              plugins={[Autoplay({ delay: 4500, stopOnInteraction: true })]}
+              className="h-full w-full"
             >
-              🟢 Confirm {selectedBrand} Compatibility
-            </a>
+              <CarouselContent className="ml-0 h-full">
+                {heroSlides.map((slide, idx) => (
+                  <CarouselItem key={idx} className="relative h-full min-h-0 basis-full pl-0">
+                    <Image
+                      src={slide.image}
+                      alt={slide.alt}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 45vw"
+                      priority={idx === 0}
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/40 via-transparent to-transparent" />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
           </div>
-        </div>
+        </motion.div>
       </section>
 
-      {/* Section 4: Product Gallery */}
-      <section className="medical-section fade-in-section" id="gallery">
-        <div className="medical-section__heading">
-          <p className="medical-eyebrow">Product Gallery</p>
-          <h2>High-resolution visual directory</h2>
-          <p>Click any visual card below to display sizes, density specs, and printer compatibility information.</p>
-        </div>
+      <ImageMarquee />
 
-        <div className="gallery-grid">
-          {site.galleryProducts.map((p) => (
-            <div key={p.id} className="gallery-card" onClick={() => setActiveProduct(p)}>
-              <Image src={p.image} alt={p.title} fill sizes="(max-width: 1024px) 50vw, 30vw" />
-              <div className="gallery-card__overlay">
-                <div className="gallery-card__info">
-                  <h3>{p.title}</h3>
-                  <span>Sizes: {p.sizes.join(", ")}</span>
+      {/* What We Offer */}
+      <section className="medical-section medical-section--alt" id="what-we-offer">
+        <SectionHeading
+          title="Core medical printing consumables"
+          description="Durable grayscale film products designed to align with professional diagnostic requirements."
+        />
+
+        <StaggerGrid className="medical-products">
+          {productCards.map((product) => (
+            <StaggerItem key={product.title}>
+              <Card className="glossy-card group/card h-full overflow-hidden border-0 py-0 ring-0">
+                <div className="relative aspect-[4/3] w-full overflow-hidden">
+                  <Image src={product.image} alt={product.alt} fill sizes="(max-width: 768px) 100vw, 30vw" className="object-cover transition-transform duration-500 group-hover/card:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/50 to-transparent" />
                 </div>
-              </div>
-            </div>
+                <CardHeader>
+                  <CardTitle className="text-xl font-bold">{product.title}</CardTitle>
+                  <CardDescription className="text-base leading-relaxed">{product.description}</CardDescription>
+                </CardHeader>
+                <CardFooter>
+                  <Button
+                    render={
+                      <a href="#compatibility">
+                        View Details
+                        <ChevronRight className="size-4" data-icon="inline-end" />
+                      </a>
+                    }
+                    variant="ghost"
+                    className="cursor-pointer font-semibold text-primary"
+                  />
+                </CardFooter>
+              </Card>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGrid>
       </section>
 
-      {/* Product Details Modal overlay */}
-      {activeProduct && (
-        <div className="modal-overlay" onClick={() => setActiveProduct(null)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close-btn" onClick={() => setActiveProduct(null)} aria-label="Close modal">
-              ✕
-            </button>
-            <div className="modal-image-panel">
-              <Image src={activeProduct.image} alt={activeProduct.title} fill sizes="(max-width: 1024px) 100vw, 35vw" />
-            </div>
-            <div className="modal-info-panel">
-              <h2>{activeProduct.title}</h2>
-              <div className="modal-spec-grid">
-                <div className="modal-spec-item">
-                  <strong>Available Sizes</strong>
-                  <div className="modal-sizes-tags">
-                    {activeProduct.sizes.map((size, idx) => (
-                      <span key={idx} className="modal-size-badge">
-                        {size}
-                      </span>
+      <WhyUsSection />
+
+      {/* Film Compatibility Finder */}
+      <section className="medical-section medical-section--dark medical-section--compatibility" id="compatibility">
+        <PremiumRotatingRing />
+        <SectionHeading
+          title="Find the correct film for your imager"
+          description="Select your print manufacturer below to verify compatible films, print sizes, and performance details instantly."
+        />
+
+        <FadeIn delay={0.1}>
+          <Card className="glossy-card compatibility-finder border-0 ring-0">
+            <CardContent className="p-0">
+              <Tabs value={selectedBrand} onValueChange={(v) => setSelectedBrand(v as BrandName)}>
+                <div className="compatibility-finder__selector px-6 pt-6">
+                  <TabsList className="flex h-auto w-full flex-wrap justify-center gap-2 bg-transparent p-0">
+                    {brands.map((brand) => (
+                      <TabsTrigger
+                        key={brand}
+                        value={brand}
+                        className="cursor-pointer rounded-full border border-border/60 px-5 py-2 text-sm font-semibold data-active:border-primary data-active:bg-primary data-active:text-white data-active:shadow-md"
+                      >
+                        {brand}
+                      </TabsTrigger>
                     ))}
+                  </TabsList>
+                </div>
+
+                {brands.map((brand) => (
+                  <TabsContent key={brand} value={brand} className="mt-0">
+                    <div className="compatibility-results">
+                      <div className="compatibility-row header">
+                        <div>Imager Model</div>
+                        <div>Compatible Film Type</div>
+                        <div>Available Sizes</div>
+                        <div>Technical Specifications</div>
+                      </div>
+                      {site.compatibilityData[brand].map((row, idx) => (
+                        <motion.div
+                          key={idx}
+                          className="compatibility-row"
+                          initial={false}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: idx * 0.05 }}
+                        >
+                          <div className="compat-printer" data-label="Imager Model">
+                            {row.printer}
+                          </div>
+                          <div className="compat-film" data-label="Compatible Film Type">
+                            {row.films.map((film, fIdx) => (
+                              <Badge key={fIdx} variant="secondary" className="compat-film-tag font-medium">
+                                {film}
+                              </Badge>
+                            ))}
+                          </div>
+                          <div className="compat-sizes" data-label="Available Sizes">
+                            {row.sizes.map((size, sIdx) => (
+                              <Badge key={sIdx} variant="outline" className="compat-size-tag font-medium">
+                                {size}
+                              </Badge>
+                            ))}
+                          </div>
+                          <div className="compat-spec" data-label="Technical Specifications">
+                            {row.spec}
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </TabsContent>
+                ))}
+              </Tabs>
+
+              <div className="compatibility-finder__footer">
+                <p>
+                  Don&apos;t see your specific printer listed here? We support a wide range of legacy and modern thermal
+                  imagers. Reach out to our technical team to verify compatibility.
+                </p>
+                <Button
+                  render={
+                    <a
+                      href={getWhatsAppLink(`Hello, I would like to verify film compatibility for my ${selectedBrand} imager.`)}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Confirm {selectedBrand} Compatibility
+                    </a>
+                  }
+                  size="lg"
+                  className="cursor-pointer bg-[#25d366] text-white hover:bg-[#20ba56]"
+                />
+              </div>
+            </CardContent>
+          </Card>
+        </FadeIn>
+      </section>
+
+      {/* Product Gallery Carousel */}
+      <section className="medical-section medical-section--gallery" id="gallery">
+        <SectionHeading
+          title="High-resolution visual directory"
+          description="Click any visual card below to display sizes, density specs, and printer compatibility information."
+        />
+
+        <FadeIn delay={0.1}>
+          <Carousel opts={{ align: "start", loop: true }} className="gallery-carousel w-full">
+            <CarouselContent className="-ml-5">
+              {site.galleryProducts.map((p) => (
+                <CarouselItem
+                  key={p.id}
+                  className="basis-[90vw] pl-5 sm:basis-[74vw] md:basis-[58vw] lg:basis-[42vw] xl:basis-[34vw]"
+                >
+                  <Card
+                    className="gallery-carousel-item group/card cursor-pointer overflow-hidden border-0 py-0 ring-0"
+                    onClick={() => setActiveProduct(p)}
+                  >
+                    <div className="relative aspect-[16/10] min-h-[15rem] w-full sm:min-h-[18rem] lg:min-h-[22rem] xl:min-h-[26rem]">
+                      <Image
+                        src={p.image}
+                        alt={p.title}
+                        fill
+                        sizes="(max-width: 768px) 90vw, (max-width: 1280px) 58vw, 34vw"
+                        className="object-cover transition-transform duration-700 group-hover/card:scale-[1.04]"
+                      />
+                      <div className="gallery-card__overlay absolute inset-0 flex items-end bg-gradient-to-t from-[#0f172a]/85 via-[#0f172a]/25 to-transparent p-5 opacity-100 transition-opacity sm:p-6">
+                        <div className="gallery-card__info text-white">
+                          <h3 className="mb-1.5 text-xl font-bold text-white sm:text-2xl">{p.title}</h3>
+                          <span className="text-sm text-white/85 sm:text-base">Sizes: {p.sizes.join(", ")}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="gallery-carousel__nav left-3 border-primary/20 bg-white/85 backdrop-blur-md shadow-md" />
+            <CarouselNext className="gallery-carousel__nav right-3 border-primary/20 bg-white/85 backdrop-blur-md shadow-md" />
+          </Carousel>
+        </FadeIn>
+      </section>
+
+      {/* Gallery Dialog */}
+      <Dialog open={!!activeProduct} onOpenChange={(open) => !open && setActiveProduct(null)}>
+        <DialogContent className="max-w-3xl gap-0 overflow-hidden p-0 sm:max-w-3xl" showCloseButton>
+          {activeProduct && (
+            <div className="grid md:grid-cols-2">
+              <div className="relative aspect-square min-h-[16rem] md:aspect-auto md:min-h-[24rem]">
+                <Image src={activeProduct.image} alt={activeProduct.title} fill sizes="(max-width: 1024px) 100vw, 35vw" className="object-cover" />
+              </div>
+              <div className="flex flex-col gap-4 p-6">
+                <DialogHeader>
+                  <DialogTitle className="text-2xl font-bold">{activeProduct.title}</DialogTitle>
+                  <DialogDescription className="sr-only">Product specifications and compatibility</DialogDescription>
+                </DialogHeader>
+                <div className="modal-spec-grid flex flex-col gap-4">
+                  <div className="modal-spec-item">
+                    <strong className="mb-2 block text-sm font-bold uppercase tracking-wide text-muted-foreground">Available Sizes</strong>
+                    <div className="flex flex-wrap gap-2">
+                      {activeProduct.sizes.map((size, idx) => (
+                        <Badge key={idx} variant="secondary">
+                          {size}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="modal-spec-item">
+                    <strong className="mb-1 block text-sm font-bold uppercase tracking-wide text-muted-foreground">Specifications</strong>
+                    <p className="text-sm leading-relaxed">{activeProduct.specs}</p>
+                  </div>
+                  <div className="modal-spec-item">
+                    <strong className="mb-1 block text-sm font-bold uppercase tracking-wide text-muted-foreground">Compatibility</strong>
+                    <p className="text-sm leading-relaxed">{activeProduct.compatibility}</p>
                   </div>
                 </div>
-                <div className="modal-spec-item">
-                  <strong>Specifications</strong>
-                  <p>{activeProduct.specs}</p>
-                </div>
-                <div className="modal-spec-item">
-                  <strong>Compatibility</strong>
-                  <p>{activeProduct.compatibility}</p>
-                </div>
+                <Button
+                  render={
+                    <a
+                      href={getWhatsAppLink(
+                        `Hello, I would like to inquire about specifications and bulk pricing for ${activeProduct.title}.`
+                      )}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <MessageCircle className="size-4" data-icon="inline-start" />
+                      Inquire on WhatsApp
+                    </a>
+                  }
+                  size="lg"
+                  className="mt-auto cursor-pointer bg-[#25d366] text-white hover:bg-[#20ba56]"
+                />
               </div>
-              <a
-                className="medical-button medical-button--primary"
-                href={getWhatsAppLink(`Hello, I would like to inquire about specifications and bulk pricing for ${activeProduct.title}.`)}
-                target="_blank"
-                rel="noreferrer"
-              >
-                💬 Inquire on WhatsApp
-              </a>
             </div>
-          </div>
-        </div>
-      )}
+          )}
+        </DialogContent>
+      </Dialog>
 
-      {/* Section 5: Industries We Serve */}
-      <section className="medical-section fade-in-section" id="industries">
-        <div className="medical-section__heading">
-          <p className="medical-eyebrow">Industries We Serve</p>
-          <h2>Supporting local healthcare centers</h2>
-          <p>Providing specialized materials for various radiology departments, chains, and distributors.</p>
-        </div>
+      {/* Industries We Serve */}
+      <section className="medical-section" id="industries">
+        <SectionHeading
+          title="Supporting local healthcare centers"
+          description="Providing specialized materials for various radiology departments, chains, and distributors."
+        />
 
-        <div className="industries-grid">
-          <div className="industry-card">
-            <Image src="/images/radiology/rad-11-hospital-radiology.png" alt="Hospitals" fill sizes="(max-width: 768px) 100vw, 25vw" />
-            <div className="industry-card__overlay" />
-            <h3>🏥 Hospitals</h3>
-          </div>
-          <div className="industry-card">
-            <Image src="/images/radiology/rad-05-diagnostic-lobby.png" alt="Diagnostic Centers" fill sizes="(max-width: 768px) 100vw, 25vw" />
-            <div className="industry-card__overlay" />
-            <h3>🔬 Diagnostic Centers</h3>
-          </div>
-          <div className="industry-card">
-            <Image src="/images/radiology/rad-06-radiologist-desk.png" alt="Radiology Clinics" fill sizes="(max-width: 768px) 100vw, 25vw" />
-            <div className="industry-card__overlay" />
-            <h3>🧠 Radiology Clinics</h3>
-          </div>
-          <div className="industry-card">
-            <Image src="/images/radiology/rad-26-imaging-supplies.png" alt="Medical Distributors" fill sizes="(max-width: 768px) 100vw, 25vw" />
-            <div className="industry-card__overlay" />
-            <h3>📦 Medical Distributors</h3>
-          </div>
-        </div>
+        <StaggerGrid className="industries-grid">
+          {industries.map((industry) => (
+            <StaggerItem key={industry.title}>
+              <div className="industry-card group">
+                <Image
+                  src={industry.image}
+                  alt={industry.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 25vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="industry-card__overlay" />
+                <h3>
+                  {industry.emoji} {industry.title}
+                </h3>
+              </div>
+            </StaggerItem>
+          ))}
+        </StaggerGrid>
       </section>
 
-      {/* Section 6: Process */}
-      <section className="medical-section fade-in-section" id="process">
-        <div className="medical-section__heading">
-          <p className="medical-eyebrow">Our Process</p>
-          <h2>Simple supply timeline</h2>
-          <p>We streamline the procurement workflow to get film sheets delivered with minimal delays.</p>
-        </div>
+      {/* Process */}
+      <section className="medical-section medical-section--process" id="process">
+        <SectionHeading
+          className="section-heading--attached"
+          title="Simple supply timeline"
+          description="We streamline the procurement workflow to get film sheets delivered with minimal delays."
+        />
 
-        <div className="process-timeline">
-          <div className="process-step">
-            <div className="process-step__number">1️⃣</div>
-            <h3>Contact Us</h3>
-            <p>Connect with our team via WhatsApp, phone call, or email.</p>
-          </div>
-          <div className="process-step">
-            <div className="process-step__number">2️⃣</div>
-            <h3>Discuss Requirements</h3>
-            <p>Specify the printer models, sizing, and quantity needed.</p>
-          </div>
-          <div className="process-step">
-            <div className="process-step__number">3️⃣</div>
-            <h3>Get Quotation</h3>
-            <p>Receive a clear bulk price quotation tailored to your clinic.</p>
-          </div>
-          <div className="process-step">
-            <div className="process-step__number">4️⃣</div>
-            <h3>Receive Products</h3>
-            <p>Supplies are shipped out fast to ensure uninterrupted imaging.</p>
-          </div>
-        </div>
+        <ProcessJourney />
       </section>
 
-      {/* Section 7: CTA Banner (Large Dark Banner) */}
-      <section className="medical-section fade-in-section">
+      {/* CTA Banner */}
+      <FadeIn className="medical-section">
         <div className="medical-cta-banner">
           <h2>Need Medical Imaging Films?</h2>
           <p>Get expert assistance today.</p>
           <div className="medical-cta-actions">
-            <a className="medical-button medical-button--whatsapp" href={defaultHeroWhatsApp} target="_blank" rel="noreferrer">
-              🟢 WhatsApp Consultation
-            </a>
-            <a className="medical-button medical-button--email" href={site.brand.emailHref}>
-              📧 Email Consultation
-            </a>
-            <a className="medical-button medical-button--phone" href={site.brand.phoneHref}>
-              ☎ Call Now
-            </a>
+            <Button
+              render={
+                <a href={defaultHeroWhatsApp} target="_blank" rel="noreferrer">
+                  WhatsApp Consultation
+                </a>
+              }
+              size="lg"
+              className="cursor-pointer bg-[#25d366] text-white hover:bg-[#20ba56]"
+            />
+            <Button
+              render={
+                <a href={site.brand.emailHref}>
+                  <Mail className="size-4" data-icon="inline-start" />
+                  Email Consultation
+                </a>
+              }
+              variant="outline"
+              size="lg"
+              className="cursor-pointer border-white/30 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20 hover:text-white"
+            />
+            <Button
+              render={
+                <a href={site.brand.phoneHref}>
+                  <Phone className="size-4" data-icon="inline-start" />
+                  Call Now
+                </a>
+              }
+              variant="outline"
+              size="lg"
+              className="cursor-pointer border-white/30 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20 hover:text-white"
+            />
           </div>
         </div>
-      </section>
+      </FadeIn>
 
-      {/* Floating Contact Experience Hub */}
+      {/* Floating Contact Hub */}
       <div className="floating-action-hub">
-        <div className={`floating-hub-menu ${isHubActive ? "active" : ""}`}>
-          <a className="floating-hub-item floating-hub-item--whatsapp" href={defaultHeroWhatsApp} target="_blank" rel="noreferrer">
-            <span className="floating-hub-item__icon">💬</span>
-            WhatsApp
-          </a>
-          <a className="floating-hub-item floating-hub-item--email" href={site.brand.emailHref}>
-            <span className="floating-hub-item__icon">✉</span>
-            Email Us
-          </a>
-          <a className="floating-hub-item floating-hub-item--call" href={site.brand.phoneHref}>
-            <span className="floating-hub-item__icon">☎</span>
-            Call Now
-          </a>
-        </div>
-        <button
-          className={`floating-hub-trigger ${isHubActive ? "active" : ""}`}
+        <AnimatePresence>
+          {isHubActive && (
+            <motion.div
+              className="floating-hub-menu active"
+              initial={false}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 16, scale: 0.9 }}
+              transition={{ duration: 0.25 }}
+            >
+              <a className="floating-hub-item floating-hub-item--whatsapp" href={defaultHeroWhatsApp} target="_blank" rel="noreferrer">
+                <span className="floating-hub-item__icon">💬</span>
+                WhatsApp
+              </a>
+              <a className="floating-hub-item floating-hub-item--email" href={site.brand.emailHref}>
+                <span className="floating-hub-item__icon">✉</span>
+                Email Us
+              </a>
+              <a className="floating-hub-item floating-hub-item--call" href={site.brand.phoneHref}>
+                <span className="floating-hub-item__icon">☎</span>
+                Call Now
+              </a>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <motion.button
+          className={cn("floating-hub-trigger", isHubActive && "active")}
           onClick={() => setIsHubActive(!isHubActive)}
           aria-label="Toggle contact menu"
+          whileTap={{ scale: 0.92 }}
+          whileHover={{ scale: 1.05 }}
         >
           📱
-        </button>
+        </motion.button>
       </div>
 
       {/* Footer */}

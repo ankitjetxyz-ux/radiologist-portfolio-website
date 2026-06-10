@@ -1,11 +1,13 @@
 import type { NextConfig } from "next";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 
 const nextConfig: NextConfig = {
-  images: {
-    remotePatterns: [
-      { protocol: "https", hostname: "framerusercontent.com" },
-      { protocol: "https", hostname: "d1yei2z3i6k35z.cloudfront.net" },
-    ],
+  reactStrictMode: true,
+  turbopack: {
+    root: projectRoot,
   },
 };
 
