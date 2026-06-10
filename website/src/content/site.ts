@@ -279,7 +279,7 @@ export const site = {
     {
       id: "rad-12",
       title: "MRI Diagnostic Film",
-      image: "/images/radiology/rad-12-spine-mri.png",
+      image: "/images/radiology/fresh-02-brain-mri-grid.jpeg",
       sizes: ['10" x 12"', '14" x 17"'],
       specs: "Fine-grained emulsion coating, highly precise grayscale calibration, optimized for clinical soft-tissue definition.",
       compatibility: "Fuji Drypix series and Agfa Drystar series laser imagers.",

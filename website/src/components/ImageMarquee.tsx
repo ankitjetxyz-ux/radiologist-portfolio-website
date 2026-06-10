@@ -3,14 +3,14 @@
 import Image from "next/image";
 
 const MARQUEE_IMAGES = [
-  { src: "/images/radiology/rad-03-mri-wide.png", alt: "MRI suite" },
-  { src: "/images/radiology/rad-01-ct-scanner-room.png", alt: "CT scanner" },
+  { src: "/images/radiology/fresh-01-xray-panel.jpeg", alt: "Multi-view X-ray diagnostic film" },
+  { src: "/images/radiology/fresh-02-brain-mri-grid.jpeg", alt: "Brain MRI film output" },
   { src: "/images/radiology/rad-10-blue-medical-film.png", alt: "Medical film" },
-  { src: "/images/radiology/rad-11-hospital-radiology.png", alt: "Hospital radiology" },
-  { src: "/images/radiology/rad-05-diagnostic-lobby.png", alt: "Diagnostic center" },
-  { src: "/images/radiology/rad-12-spine-mri.png", alt: "Spine MRI" },
+  { src: "/images/radiology/fresh-04-shoulder-xray.jpeg", alt: "Shoulder X-ray film" },
+  { src: "/images/radiology/fresh-05-foot-xray.jpeg", alt: "Foot X-ray film" },
+  { src: "/images/radiology/fresh-08-skull-profile.jpeg", alt: "Skull profile X-ray film" },
   { src: "/images/radiology/rad-04-print-films.png", alt: "Print films" },
-  { src: "/images/radiology/rad-06-radiologist-desk.png", alt: "Radiologist desk" },
+  { src: "/images/radiology/fresh-07-leg-fracture-dual.jpeg", alt: "Leg fracture X-ray film" },
 ];
 
 export function ImageMarquee() {

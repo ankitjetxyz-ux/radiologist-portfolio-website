@@ -44,12 +44,12 @@ type MedicalSitePageProps = {
 };
 
 const heroSlides = [
-  { image: "/images/radiology/rad-03-mri-wide.png", alt: "MRI scanner room diagnostics" },
-  { image: "/images/radiology/rad-01-ct-scanner-room.png", alt: "CT scanner room diagnostics" },
+  { image: "/images/radiology/fresh-02-brain-mri-grid.jpeg", alt: "Brain MRI diagnostic film output" },
+  { image: "/images/radiology/fresh-01-xray-panel.jpeg", alt: "Multi-view X-ray diagnostic film panel" },
   { image: "/images/radiology/rad-10-blue-medical-film.png", alt: "Blue medical printing film stack" },
-  { image: "/images/radiology/rad-09-imaging-control.png", alt: "Medical imaging workflow environment" },
-  { image: "/images/radiology/rad-12-spine-mri.png", alt: "Spine MRI diagnostic imaging" },
-  { image: "/images/radiology/rad-11-hospital-radiology.png", alt: "Hospital radiology department" },
+  { image: "/images/radiology/fresh-03-diagnostic-archive.jpeg", alt: "Diagnostic film archive display" },
+  { image: "/images/radiology/fresh-08-skull-profile.jpeg", alt: "Skull profile X-ray on diagnostic film" },
+  { image: "/images/radiology/fresh-04-shoulder-xray.jpeg", alt: "Shoulder joint X-ray diagnostic film" },
 ];
 
 const productCards = [
@@ -74,9 +74,9 @@ const productCards = [
 ];
 
 const industries = [
-  { title: "Hospitals", emoji: "🏥", image: "/images/radiology/rad-11-hospital-radiology.png" },
-  { title: "Diagnostic Centers", emoji: "🔬", image: "/images/radiology/rad-05-diagnostic-lobby.png" },
-  { title: "Radiology Clinics", emoji: "🧠", image: "/images/radiology/rad-06-radiologist-desk.png" },
+  { title: "Hospitals", emoji: "🏥", image: "/images/radiology/fresh-01-xray-panel.jpeg" },
+  { title: "Diagnostic Centers", emoji: "🔬", image: "/images/radiology/fresh-02-brain-mri-grid.jpeg" },
+  { title: "Radiology Clinics", emoji: "🧠", image: "/images/radiology/fresh-05-foot-xray.jpeg" },
   { title: "Medical Distributors", emoji: "📦", image: "/images/radiology/rad-26-imaging-supplies.png" },
 ];
 
@@ -205,9 +205,42 @@ export function MedicalSitePage({ variant = "home" }: MedicalSitePageProps) {
               className="min-h-12 min-w-36 cursor-pointer text-base backdrop-blur-sm"
             />
           </div>
+        </motion.div>
+
+        <div className="medical-hero__visual-column">
+          <motion.div
+            className="medical-hero__visual"
+            initial={false}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="hero-carousel-frame">
+              <Carousel
+                opts={{ loop: true }}
+                plugins={[Autoplay({ delay: 4500, stopOnInteraction: true })]}
+                className="h-full w-full"
+              >
+                <CarouselContent className="ml-0 h-full">
+                  {heroSlides.map((slide, idx) => (
+                    <CarouselItem key={idx} className="relative h-full min-h-0 basis-full pl-0">
+                      <Image
+                        src={slide.image}
+                        alt={slide.alt}
+                        fill
+                        sizes="(max-width: 1024px) 96vw, 62vw"
+                        priority={idx === 0}
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/40 via-transparent to-transparent" />
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+              </Carousel>
+            </div>
+          </motion.div>
 
           <motion.div
-            className="hero-stats"
+            className="hero-stats hero-stats--below-visual"
             initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.45 }}
@@ -219,38 +252,7 @@ export function MedicalSitePage({ variant = "home" }: MedicalSitePageProps) {
               </div>
             ))}
           </motion.div>
-        </motion.div>
-
-        <motion.div
-          className="medical-hero__visual"
-          initial={false}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <div className="hero-carousel-frame">
-            <Carousel
-              opts={{ loop: true }}
-              plugins={[Autoplay({ delay: 4500, stopOnInteraction: true })]}
-              className="h-full w-full"
-            >
-              <CarouselContent className="ml-0 h-full">
-                {heroSlides.map((slide, idx) => (
-                  <CarouselItem key={idx} className="relative h-full min-h-0 basis-full pl-0">
-                    <Image
-                      src={slide.image}
-                      alt={slide.alt}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 45vw"
-                      priority={idx === 0}
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/40 via-transparent to-transparent" />
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-            </Carousel>
-          </div>
-        </motion.div>
+        </div>
       </section>
 
       <ImageMarquee />
