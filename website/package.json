@@ -10,7 +10,8 @@
     "extract:framer": "node scripts/extract-framer.mjs",
     "copy:radiology-images": "node scripts/copy-radiology-images.mjs",
     "copy:images": "node scripts/copy-images.mjs",
-    "prepare:framer": "npm run copy:radiology-images && npm run extract:framer"
+    "copy:brand-logo": "node scripts/copy-brand-logo.mjs",
+    "prepare:framer": "npm run copy:brand-logo && npm run copy:radiology-images && npm run extract:framer"
   },
   "dependencies": {
     "next": "16.2.7",

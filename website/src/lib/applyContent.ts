@@ -16,7 +16,7 @@ function replaceTextInNode(node: Text) {
 }
 
 function patchLinks() {
-  const { brand, nav } = site;
+  const { brand } = site;
 
   document.querySelectorAll("a[href]").forEach((anchor) => {
     const el = anchor as HTMLAnchorElement;
@@ -110,7 +110,7 @@ export function buildWhatsAppInquiryUrl(fields: {
   message: string;
 }) {
   const text = encodeURIComponent(
-    `New portfolio inquiry from Vandan Distributors\nName: ${fields.name}\nPhone: ${fields.phone}\nCentre: ${fields.company}\nNeed: ${fields.message}`
+    `New MIPS inquiry from Vandan Distributors\nName: ${fields.name}\nPhone: ${fields.phone}\nCentre: ${fields.company}\nNeed: ${fields.message}`
   );
   return `https://wa.me/${site.brand.whatsappNumber}?text=${text}`;
 }

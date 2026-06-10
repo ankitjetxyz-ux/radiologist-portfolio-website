@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     images: [site.brand.ogImage],
   },
   icons: {
-    icon: "/images/iIUgE9ex8JcqtmtGy60uSlUIptE.jpg",
+    icon: site.brand.logo,
   },
 };
 

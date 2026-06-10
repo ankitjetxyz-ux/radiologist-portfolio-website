@@ -1,7 +1,5 @@
-import { FramerPageShell } from "@/components/FramerPageShell";
-import { getFramerPage } from "@/lib/framer-pages";
+import { MedicalSitePage } from "@/components/MedicalSitePage";
 
 export default function HomePage() {
-  const page = getFramerPage("index");
-  return <FramerPageShell page={page} />;
+  return <MedicalSitePage variant="home" />;
 }
