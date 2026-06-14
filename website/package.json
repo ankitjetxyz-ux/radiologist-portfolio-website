@@ -11,6 +11,7 @@
     "copy:radiology-images": "node scripts/copy-radiology-images.mjs",
     "copy:images": "node scripts/copy-images.mjs",
     "copy:brand-logo": "node scripts/copy-brand-logo.mjs",
+    "sync:assets": "node scripts/sync-assets.mjs",
     "prepare:framer": "npm run copy:brand-logo && npm run copy:radiology-images && npm run extract:framer"
   },
   "dependencies": {

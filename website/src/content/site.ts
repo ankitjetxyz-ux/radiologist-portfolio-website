@@ -1,186 +1,119 @@
 export const site = {
   brand: {
-    name: "Vandan Distributors",
+    name: "Accurate Medical Solutions",
+    shortName: "Accurate",
     tagline: "Medical Imaging Print Solutions",
-    title: "Vandan Distributors | MRI and CT Imaging Materials",
+    title: "Accurate Medical Solutions | Radiology & Diagnostic Supplies",
     description:
-      "Vandan Distributors supplies MRI and CT imaging materials, print media, and support solutions for hospitals and diagnostic centres.",
-    logo: "/images/vandan-logo.svg",
-    ogImage: "/images/vandan-logo.svg",
-    phone: "+91 91579 76333",
-    phoneHref: "tel:+919157976333",
-    email: "vandaninnovations@gmail.com",
-    emailHref: "mailto:vandaninnovations@gmail.com",
-    whatsappLink: "https://wa.link/x8qk31",
-    whatsappNumber: "919157976333",
+      "Accurate Medical Solutions provides contrast media, X-ray films, medical imaging print solutions (MIPS), and diagnostic consumables for hospitals and diagnostic centres across India.",
+    logo: "/images/brand/accurate-logo.jpg",
+    ogImage: "/images/brand/accurate-logo.jpg",
+    phone: "+91 810 810 0404",
+    phoneAlt: "+91 91579 76333",
+    phoneHref: "tel:+918108100404",
+    email: "info@accuratemedical.in",
+    emailHref: "mailto:info@accuratemedical.in",
+    whatsappLink: "https://wa.me/918108100404",
+    whatsappNumber: "918108100404",
     mapsLink: "https://maps.app.goo.gl/yE4MPrEjbc2gkEC4A",
-    location: "Ahmedabad, Gujarat",
-    themeColor: "#081520",
+    location: "Ahmedabad, Gujarat, India",
+    themeColor: "#0c4a6e",
+    accentColor: "#e85d26",
   },
+
+  nav: [
+    { label: "Home", href: "/" },
+    { label: "About Us", href: "/about" },
+    { label: "Products", href: "/products" },
+    { label: "Testimonials", href: "/testimonials" },
+    { label: "Downloads", href: "/downloads" },
+    { label: "Contact", href: "/contact" },
+  ] as const,
+
+  productNav: [
+    { label: "Contrast Media", href: "/products/contrast-media" },
+    { label: "X-Ray Films", href: "/products/x-ray-films" },
+    { label: "Other Products", href: "/products/other-products" },
+    { label: "Printing Solutions", href: "/products/printing-solutions" },
+  ] as const,
 
   hero: {
-    eyebrow: "MRI & CT Imaging Materials",
-    headline: "Materials and print systems built for MRI and CT scan workflows.",
-    lede: "Dark, polished product presentation for radiology teams that need reliable films, media, and service.",
+    eyebrow: "Medical Imaging Print Solutions (MIPS)",
+    headline: "Precision radiology supplies for accurate diagnostics.",
+    lede:
+      "Contrast media, diagnostic films, and end-to-end medical imaging print solutions — trusted by hospitals, diagnostic centres, and radiology teams since 2015.",
     ctaPrimary: "Request a Quote",
-    ctaSecondary: "Explore Pages",
+    ctaSecondary: "Explore Products",
   },
 
-  modalities:
-    "Built for MRI, CT, PET-CT, Ultrasound, X-ray, OPG, and multi-modality workflows.",
+  intro: {
+    title: "Accurate Medical Print Solutions",
+    body:
+      "Started operations in June 2015, Accurate Medical Solutions is promoted by professionals with vast experience in printing, medical imaging, and IT. We deliver high-quality, cost-effective MIPS to hospitals, diagnostic centres, radiologists, sonologists, nuclear medicine centres, and mobile healthcare units.",
+    highlight:
+      "Our MIPS model is an end-to-end solution with no capital expense — printer, software, ink, media, maintenance, and services included. You pay only per print.",
+  },
 
-  trust: [
-    { title: "Per-print billing", detail: "Pay only for what you print" },
-    { title: "No capex", detail: "All-in-one solution model" },
-    { title: "Maintenance included", detail: "Software, service, and support" },
-    { title: "Built for radiology", detail: "Hospitals and diagnostic centres" },
+  whyChooseUs: [
+    {
+      title: "Per-Print Billing",
+      body: "No capital expenditure. Pay only for what you print with maintenance and service included.",
+    },
+    {
+      title: "Multi-Modality Coverage",
+      body: "MRI, CT, PET-CT, Ultrasound, X-Ray, and OPG workflows supported from a single platform.",
+    },
+    {
+      title: "Trusted Product Range",
+      body: "JB Pharma contrast media, Fuji & Agfa X-ray films, and a complete catalogue of diagnostic consumables.",
+    },
+    {
+      title: "Pan-India Reach",
+      body: "Strong distribution across Gujarat and major states with responsive technical and commercial support.",
+    },
   ],
 
   metrics: [
-    { value: "2015", label: "operating since" },
-    { value: "Per print", label: "billing model" },
-    { value: "End-to-end", label: "solution scope" },
+    { value: "2015", label: "Operating since" },
+    { value: "Per print", label: "Billing model" },
+    { value: "30+", label: "States served" },
   ],
 
-  portfolio: [
-    {
-      slug: "iphone-15",
-      campaign: "Solution 01",
-      title: "MRI Print Solution",
-      summary: "Optimized for diagnostic clarity and daily hospital use.",
-      replacesTemplate: "iphone-15",
-    },
-    {
-      slug: "unsweetned",
-      campaign: "Solution 02",
-      title: "CT Print Solution",
-      summary: "Reliable output for high-volume imaging workflows.",
-      replacesTemplate: "unsweetned",
-    },
-    {
-      slug: "actr-acre",
-      campaign: "Solution 03",
-      title: "PET-CT Print Solution",
-      summary: "Professional presentation for advanced imaging centres.",
-      replacesTemplate: "actr-acre",
-    },
-    {
-      slug: "editorial",
-      campaign: "Solution 04",
-      title: "Workflow Support Package",
-      summary: "Media, maintenance, and support for multi-modality sites.",
-      replacesTemplate: "editorial",
-    },
-  ],
-
-  whyUs: [
-    {
-      title: "Specialized",
-      body: "Focused on MRI and CT imaging materials instead of generic vendor messaging.",
-    },
-    {
-      title: "Reliable",
-      body: "Clear service promises, direct contact paths, and practical product language build trust quickly.",
-    },
-    {
-      title: "Efficient",
-      body: "Fast inquiry handling and a simple contact flow mirror the target site’s brochure style.",
-    },
-    {
-      title: "Professional",
-      body: "Dark surfaces, sharper spacing, and cleaner hierarchy create a credible corporate impression.",
-    },
-  ],
-
-  process: [
-    {
-      step: "01",
-      title: "Review the solutions",
-      body: "Visitors understand the MIPS offering and the healthcare use case right away.",
-    },
-    {
-      step: "02",
-      title: "Compare the model",
-      body: "Per-print pricing, included maintenance, and software support reduce uncertainty.",
-    },
-    {
-      step: "03",
-      title: "Start printing",
-      body: "WhatsApp, call, and the short form make it easy to move from inquiry to deployment.",
-    },
-  ],
-
-  audience: {
-    headline:
-      "Built for hospitals, diagnostic centres, radiologists, and healthcare centres that expect a polished vendor experience.",
-    body: "This website speaks directly to decision-makers who want quality output, dependable service, and a professional MIPS partner.",
-    segments: [
-      "Diagnostic centres",
-      "Hospitals and clinics",
-      "Radiologists",
-      "Radiology chains",
-      "Scaling facilities",
+  about: {
+    overview:
+      "Accurate Medical Solutions is a specialist radiology and diagnostic supplies company focused on contrast media, X-ray films, medical imaging print solutions, and hospital consumables. Since June 2015, we have partnered with healthcare facilities to reduce printing costs while improving output quality.",
+    mission:
+      "To deliver reliable, cost-effective medical imaging solutions that help clinicians make accurate diagnoses without capital burden on healthcare providers.",
+    vision:
+      "To be India's most trusted partner for radiology departments — from contrast media and films to complete MIPS deployments.",
+    values: [
+      { title: "Clinical Accuracy", body: "Products and print output engineered for diagnostic confidence." },
+      { title: "Transparency", body: "Clear per-print pricing with no hidden maintenance or software costs." },
+      { title: "Responsiveness", body: "Fast inquiry handling via WhatsApp, phone, and direct email support." },
+      { title: "Partnership", body: "Long-term relationships built on consistent supply and technical guidance." },
+    ],
+    experience:
+      "Our leadership team brings decades of combined experience in medical imaging, radiology workflow software, and healthcare distribution — enabling us to advise on film compatibility, contrast selection, and MIPS deployment.",
+    trustPoints: [
+      "Preferred supplier for hospitals and diagnostic chains",
+      "Authorized distribution for JB Pharma contrast media",
+      "Fuji, Agfa, and VMS X-ray film availability",
+      "End-to-end MIPS with software, printer, ink, and service",
     ],
   },
 
   contact: {
-    headline: "Ready to discuss your MIPS requirements?",
+    headline: "Ready to discuss your radiology requirements?",
+    subheadline: "Reach our team for product enquiries, MIPS demos, or bulk supply quotes.",
     ctaWhatsApp: "Chat on WhatsApp",
     ctaMaps: "View on Google Maps",
-    ctaConsultation: "Book Consultation",
+    ctaConsultation: "Send Inquiry",
   },
 
-  footer: "© 2026 Vandan Distributors. Medical Imaging Print Solutions (MIPS).",
+  footer:
+    "© 2026 Accurate Medical Solutions. Contrast media, diagnostic films & medical imaging print solutions.",
 
-  nav: {
-    portfolio: "Category",
-    whyUs: "Why Us",
-    contact: "Contact",
-    cta: "Book Consultation",
-  },
-
-  /** Template string replacements applied to Framer DOM text nodes (runtime safety net) */
-  textReplacements: {
-    "Sealed Edition": "Vandan Distributors",
-    SEALED_EDITION: "Vandan Distributors",
-    "Framer Portfolio Template": "Medical Imaging Print Solutions",
-    "Premium Framer Portfolio Template": "medical imaging print solutions",
-    "Crafted exclusively for small Studio/Agency and Freelancers":
-      "Built for hospitals, diagnostic centres, and radiology chains",
-    "(Art director, Designer, Photographer)": "",
-    "My Framer Site": "Vandan Distributors",
-    "Get in touch": "Contact",
-    About: "About",
-    Services: "Solutions",
-    Work: "Solutions",
-    Projects: "Solutions",
-    "GET TEMPLATE": "Book Consultation",
-    "Elevate your online presence":
-      "Medical imaging print solutions designed for hospitals and diagnostic centres.",
-    "cedrick.lachot@gmail.com": "vandaninnovations@gmail.com",
-    "Bronx, NY": "Ahmedabad, Gujarat",
-    "Brand Identity": "Medical Imaging Print Solutions",
-    "Product Design": "Diagnostic Print Systems",
-    "Print & Packaging": "Radiology Workflow Materials",
-    "We work with": "Trusted by healthcare partners",
-    ">SEALED<": ">Vandan<",
-    "sealed.edition": "vandan.distributors",
-    "Cedrick Lachot": "Vandan Distributors",
-    "Art Director & Designer": "Radiology Print Specialists",
-    Nike: "Apollo Hospitals",
-    Meta: "Fortis Healthcare",
-    Google: "Manipal Hospitals",
-    Apple: "Dr. Lal PathLabs",
-    Nvidia: "Max Healthcare",
-    Tesla: "Metropolis Healthcare",
-    Spotify: "Medanta",
-    Portfolio: "Solutions",
-    "Print Design Portfolio": "Medical Imaging Print Solutions",
-    "Premium medical print solutions designed to attract serious healthcare clients.":
-      "Medical imaging print solutions designed for hospitals and diagnostic centres.",
-    "Vandan Distributors creates reliable, efficient, and high-trust print solutions for hospitals, diagnostic centres, and radiology chains that want better output and faster inquiries.":
-      "Vandan Distributors creates reliable, cost-effective Medical Imaging Print Solutions (MIPS) for hospitals, diagnostic centres, and radiology teams.",
-  },
+  textReplacements: {} as Record<string, string>,
 
   compatibilityData: {
     Fuji: [
@@ -242,49 +175,7 @@ export const site = {
       },
     ],
   },
-
-  galleryProducts: [
-    {
-      id: "rad-04",
-      title: "Diagnostic Film Supplies",
-      image: "/images/radiology/rad-04-print-films.png",
-      sizes: ['8" x 10"', '10" x 12"', '14" x 17"'],
-      specs: "Low fog, anti-static coating, Dmax ≥ 3.2, high spatial resolution, blue polyester base.",
-      compatibility: "DICOM-compatible thermal dry imagers (Fuji, Agfa, Carestream, Konica, Sony).",
-    },
-    {
-      id: "rad-10",
-      title: "Blue Base Medical Film",
-      image: "/images/radiology/rad-10-blue-medical-film.png",
-      sizes: ['8" x 10"', '10" x 12"', '11" x 14"', '14" x 17"'],
-      specs: "Standard diagnostic blue hue, linear density curve for grayscale precision, archival life >20 years.",
-      compatibility: "Fully compatible with standard direct digital dry imagers, including Agfa Drystar AXYS and Fuji Lite.",
-    },
-    {
-      id: "rad-26",
-      title: "Dry Imaging Consumables",
-      image: "/images/radiology/rad-26-imaging-supplies.png",
-      sizes: ["Standard Box (100 sheets/box)", "Bulk Box (150 sheets/box)"],
-      specs: "Premium light-shielded packaging, scratch-resistant surface, stable tone reproduction across batches.",
-      compatibility: "Fits standard multi-size loading trays for laser dry imagers and thermal printers.",
-    },
-    {
-      id: "rad-02",
-      title: "X-Ray Viewbox Grade Film",
-      image: "/images/radiology/rad-02-xray-lightbox.png",
-      sizes: ['8" x 10"', '10" x 12"', '14" x 17"'],
-      specs: "Designed for high-contrast viewing on lightboxes, sharp edge definition, optimized for bone and lung diagnostics.",
-      compatibility: "Standard dry laser imaging equipment and analog chemical-free printing workflows.",
-    },
-    {
-      id: "rad-12",
-      title: "MRI Diagnostic Film",
-      image: "/images/radiology/fresh-02-brain-mri-grid.jpeg",
-      sizes: ['10" x 12"', '14" x 17"'],
-      specs: "Fine-grained emulsion coating, highly precise grayscale calibration, optimized for clinical soft-tissue definition.",
-      compatibility: "Fuji Drypix series and Agfa Drystar series laser imagers.",
-    },
-  ],
 } as const;
 
 export type SiteContent = typeof site;
+export type BrandName = keyof typeof site.compatibilityData;

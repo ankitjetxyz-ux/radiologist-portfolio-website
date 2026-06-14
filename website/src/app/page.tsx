@@ -1,5 +1,10 @@
-import { MedicalSitePage } from "@/components/MedicalSitePage";
+import { PageShell } from "@/components/PageShell";
+import { HomePage } from "@/components/HomePage";
 
-export default function HomePage() {
-  return <MedicalSitePage variant="home" />;
+export default function Page() {
+  return (
+    <PageShell>
+      <HomePage />
+    </PageShell>
+  );
 }

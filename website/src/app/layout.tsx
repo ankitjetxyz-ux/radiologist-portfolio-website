@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { site } from "@/content/site";
 import "./globals.css";
+import "./site-pages.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#0c4a6e",
+  themeColor: "#e85d26",
 };
 
 export default function RootLayout({

@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
 export default function ProcessPage() {
-  redirect("/#process");
+  redirect("/products/printing-solutions");
 }
