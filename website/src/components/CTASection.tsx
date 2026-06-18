@@ -15,7 +15,7 @@ export function CTASection({
   description = site.contact.subheadline,
 }: CTASectionProps) {
   const whatsappHref = `https://api.whatsapp.com/send?phone=${site.brand.whatsappNumber}&text=${encodeURIComponent(
-    "Hello, I would like to discuss my radiology requirements with Accurate Medical Solutions."
+    "Hello, I would like to discuss my radiology requirements with Vandan Distributors."
   )}`;
 
   return (
@@ -32,7 +32,7 @@ export function CTASection({
               </a>
             }
             size="lg"
-            className="cursor-pointer bg-[#25d366] text-white hover:bg-[#20ba56]"
+            className="cursor-pointer"
           />
           <Button
             render={
@@ -43,7 +43,7 @@ export function CTASection({
             }
             variant="outline"
             size="lg"
-            className="cursor-pointer border-white/30 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20 hover:text-white"
+            className="cursor-pointer"
           />
           <Button
             render={
@@ -54,7 +54,7 @@ export function CTASection({
             }
             variant="outline"
             size="lg"
-            className="cursor-pointer border-white/30 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20 hover:text-white"
+            className="cursor-pointer"
           />
         </div>
       </div>

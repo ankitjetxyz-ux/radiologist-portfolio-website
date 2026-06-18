@@ -32,7 +32,7 @@ export const contrastCategories = [
   },
 ] as const;
 
-/** Accurate Medical Solutions contrast media product catalogue */
+/** Vandan Distributors contrast media product catalogue */
 export const contrastProducts: ContrastProduct[] = [
   {
     id: "lek-pamidol",

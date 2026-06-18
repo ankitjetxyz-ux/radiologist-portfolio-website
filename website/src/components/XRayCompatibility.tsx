@@ -11,10 +11,16 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 
-const brands = ["Fuji", "Agfa", "Carestream", "Konica", "Sony"] as const;
+const brands = [
+  "Compact dry imagers",
+  "Department imagers",
+  "High-volume imagers",
+  "Specialty imagers",
+  "Thermal output systems",
+] as const;
 
 export function XRayCompatibility() {
-  const [selectedBrand, setSelectedBrand] = useState<BrandName>("Fuji");
+  const [selectedBrand, setSelectedBrand] = useState<BrandName>("Compact dry imagers");
 
   const getWhatsAppLink = (message: string) =>
     `https://api.whatsapp.com/send?phone=${site.brand.whatsappNumber}&text=${encodeURIComponent(message)}`;
@@ -22,9 +28,9 @@ export function XRayCompatibility() {
   return (
     <section className="medical-section medical-section--dark medical-section--compatibility" id="compatibility">
       <PremiumRotatingRing />
-      <SectionHeading
+        <SectionHeading
         title="Find the correct film for your imager"
-        description="Select your print manufacturer below to verify compatible films, print sizes, and performance details instantly."
+        description="Select your imager category below to verify compatible films, print sizes, and performance details instantly."
       />
 
       <FadeIn delay={0.1}>
@@ -97,15 +103,15 @@ export function XRayCompatibility() {
               <Button
                 render={
                   <a
-                    href={getWhatsAppLink(`Hello, I would like to verify film compatibility for my ${selectedBrand} imager.`)}
+                    href={getWhatsAppLink(`Hello, I would like to verify film compatibility for my ${selectedBrand}.`)}
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Confirm {selectedBrand} Compatibility
+                    Confirm Compatibility
                   </a>
                 }
                 size="lg"
-                className="cursor-pointer bg-[#25d366] text-white hover:bg-[#20ba56]"
+                className="cursor-pointer"
               />
             </div>
           </CardContent>

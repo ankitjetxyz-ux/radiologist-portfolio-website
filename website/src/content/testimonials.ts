@@ -11,7 +11,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "sonography-ct",
     quote:
-      "We have been using Accurate Medical Print Solutions for the last 4 months for printing sonography and CT scan images on films. The quality and service have been consistently excellent.",
+      "We have been using Vandan Distributors for the last 4 months for printing sonography and CT scan images on films. The quality and service have been consistently excellent.",
     author: "Radiology Department",
     role: "Chief Radiologist",
     facility: "Multi-Speciality Diagnostic Centre",
@@ -20,7 +20,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "ultrasound-quality",
     quote:
-      "The printing solution provided by Accurate Medical Print Solutions for ultrasound scan modalities is excellent. We have observed that the quality of images is outstanding for clinical reporting.",
+      "The printing solution provided by Vandan Distributors for ultrasound scan modalities is excellent. We have observed that the quality of images is outstanding for clinical reporting.",
     author: "Sonology Unit",
     role: "Consultant Sonologist",
     facility: "Diagnostic Imaging Centre",
@@ -29,7 +29,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "mips-cost",
     quote:
-      "Accurate's per-print MIPS model eliminated our capital expense on printers and maintenance. We saved significantly on our monthly imaging print costs while improving output quality.",
+      "Vandan Distributors' per-print MIPS model eliminated our capital expense on printers and maintenance. We saved significantly on our monthly imaging print costs while improving output quality.",
     author: "Hospital Administration",
     role: "Operations Manager",
     facility: "Private Hospital",
@@ -38,7 +38,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "contrast-supply",
     quote:
-      "Reliable supply of contrast media with competitive pricing and timely delivery. Accurate has become our preferred vendor for radiology consumables.",
+      "Reliable supply of contrast media with competitive pricing and timely delivery. Vandan Distributors has become our preferred vendor for radiology consumables.",
     author: "Procurement & Radiology",
     role: "Purchase Head",
     facility: "Corporate Hospital Chain",
@@ -47,7 +47,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "xray-films",
     quote:
-      "Fuji and Agfa film stock from Accurate has been consistent in quality. Their technical team helped us verify imager compatibility and optimize our reorder schedule.",
+      "Diagnostic film stock from Vandan Distributors has been consistent in quality. Their technical team helped us verify imager compatibility and optimize our reorder schedule.",
     author: "Imaging Department",
     role: "Senior Radiographer",
     facility: "Diagnostic Centre",

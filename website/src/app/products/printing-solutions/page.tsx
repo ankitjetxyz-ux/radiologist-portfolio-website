@@ -18,7 +18,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: `Accurate Printing Solutions | ${site.brand.name}`,
+  title: `Printing Solutions | ${site.brand.name}`,
   description: "Medical Imaging Print Solutions (MIPS) — MRI, CT, Ultrasound, X-Ray, PET-CT, and OPG printing with per-print billing and zero capex.",
 };
 
@@ -122,7 +122,7 @@ export default function PrintingSolutionsPage() {
         </StaggerGrid>
         <FadeIn delay={0.2}>
           <div className="office-locations">
-            <strong>Accurate Offices:</strong>
+            <strong>Vandan Distributors Offices:</strong>
             {officeLocations.map((city) => (
               <Badge key={city} variant="secondary">
                 {city}

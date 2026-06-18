@@ -11,12 +11,12 @@ import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: `Contact | ${site.brand.name}`,
-  description: "Contact Accurate Medical Solutions for product enquiries, MIPS demos, and bulk supply quotes.",
+  description: "Contact Vandan Distributors for product enquiries, MIPS demos, and bulk supply quotes.",
 };
 
 export default function ContactPage() {
   const whatsappHref = `https://api.whatsapp.com/send?phone=${site.brand.whatsappNumber}&text=${encodeURIComponent(
-    "Hello, I would like to get in touch with Accurate Medical Solutions."
+    "Hello, I would like to get in touch with Vandan Distributors."
   )}`;
 
   return (
@@ -79,14 +79,14 @@ export default function ContactPage() {
                       </a>
                     }
                     size="lg"
-                    className="w-full cursor-pointer bg-[#25d366] text-white hover:bg-[#20ba56]"
+                    className="w-full cursor-pointer"
                   />
                 </CardContent>
               </Card>
 
               <div className="contact-map-placeholder">
                 <iframe
-                  title="Accurate Medical Solutions location"
+                  title="Vandan Distributors location"
                   src="https://maps.google.com/maps?q=14%20First%20Floor%2C%20Municipal%20Market%2C%20G.D%20Road%2C%20Opp.%20Maruti%20Nandan%20Complex%2C%20Vijay%20Para%2C%20Visnagar%2C%20Gujarat%20384315%2C%20India&output=embed"
                   width="100%"
                   height="360"

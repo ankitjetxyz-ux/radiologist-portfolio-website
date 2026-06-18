@@ -12,7 +12,7 @@ export const mipsOverview = {
   title: "Medical Imaging Print Solutions (MIPS)",
   subtitle: "Versatile DICOM printing on conventional films, white medical-grade films, and paper.",
   description:
-    "Accurate MIPS is an end-to-end solution with zero capital expense. We provide the printer, DICOM software, ink, media, maintenance, and service — you pay only per print.",
+    "Vandan Distributors MIPS is an end-to-end solution with zero capital expense. We provide the printer, DICOM software, ink, media, maintenance, and service — you pay only per print.",
   benefits: [
     "Save up to 50% on printing costs",
     "No capital expenditure — all-in-one per-print model",
@@ -117,7 +117,7 @@ export const printingSolutions: PrintingSolution[] = [
 ];
 
 export const mipsIncludes = [
-  { label: "Accurate Printer", detail: "Medical-grade DICOM print engine" },
+  { label: "Vandan Distributors Printer", detail: "Medical-grade DICOM print engine" },
   { label: "DICOM Software", detail: "Customisable layout and modality connectivity" },
   { label: "Ink & Media", detail: "Films, paper, and consumables supplied" },
   { label: "Maintenance", detail: "Full service and peace of mind" },

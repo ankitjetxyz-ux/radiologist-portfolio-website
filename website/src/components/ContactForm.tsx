@@ -12,7 +12,7 @@ export function ContactForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const text = [
-      "Hello Accurate Medical Solutions,",
+      "Hello Vandan Distributors,",
       "",
       `Name: ${form.name}`,
       `Phone: ${form.phone}`,

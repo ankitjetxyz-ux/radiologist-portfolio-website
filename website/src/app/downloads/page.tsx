@@ -4,7 +4,7 @@ import DownloadsClient from "./DownloadsClient";
 
 export const metadata: Metadata = {
   title: `Downloads | ${site.brand.name}`,
-  description: "Product catalogues, brochures, and technical datasheets for Accurate Medical Solutions.",
+  description: "Product catalogues, brochures, and technical datasheets for Vandan Distributors.",
 };
 
 export default function DownloadsPage() {

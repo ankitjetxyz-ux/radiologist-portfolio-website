@@ -21,7 +21,7 @@ export function SiteHeader() {
   }, []);
 
   const whatsappHref = `https://api.whatsapp.com/send?phone=${site.brand.whatsappNumber}&text=${encodeURIComponent(
-    "Hello, I would like to know more about Accurate Medical Solutions products."
+    "Hello, I would like to know more about Vandan Distributors products."
   )}`;
 
   return (

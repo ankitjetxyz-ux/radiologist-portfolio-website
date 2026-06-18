@@ -8,7 +8,7 @@ import { CTASection } from "@/components/CTASection";
 
 export const metadata: Metadata = {
   title: `Testimonials | ${site.brand.name}`,
-  description: "Customer reviews and success stories from hospitals and diagnostic centres using Accurate Medical Solutions.",
+  description: "Customer reviews and success stories from hospitals and diagnostic centres using Vandan Distributors.",
 };
 
 export default function TestimonialsPage() {
@@ -17,7 +17,7 @@ export default function TestimonialsPage() {
       <PageHero
         eyebrow="Client Feedback"
         title="Testimonials"
-        description="Hospitals, diagnostic centres, and radiology departments share their experience with Accurate products and MIPS services."
+        description="Hospitals, diagnostic centres, and radiology departments share their experience with Vandan Distributors products and MIPS services."
       />
 
       <section className="medical-section">

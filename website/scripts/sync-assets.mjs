@@ -17,13 +17,13 @@ function slugify(name) {
   return name.replace(/\s+/g, "-").replace(/[^a-zA-Z0-9._-]/g, "");
 }
 
-// Logo from Accurate PPT (in assets folder)
+// Logo from vandabn distributors PPT (in assets folder)
 const pptLogo = path.join(publicDir, "images/_ppt-extract/ppt/media/image1.jpg");
 const assetLogo = path.join(assetsDir, "image.png");
 
 if (fs.existsSync(pptLogo)) {
   fs.copyFileSync(pptLogo, path.join(brandDest, "accurate-logo.jpg"));
-  console.log("Copied Accurate logo from PPT");
+  console.log("Copied vandabn distributors logo from PPT");
 } else if (fs.existsSync(assetLogo)) {
   fs.copyFileSync(assetLogo, path.join(brandDest, "logo.png"));
   console.log("Copied logo.png from assets");

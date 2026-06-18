@@ -15,7 +15,7 @@ import { StaggerGrid, StaggerItem } from "@/components/FadeIn";
 
 const highlights = [
   { value: "2015", label: "Serving Gujarat since" },
-  { value: "5+", label: "Major imager brands" },
+  { value: "5+", label: "Imager categories" },
   { value: "Pan-state", label: "Clinic & hospital supply" },
 ];
 
@@ -50,7 +50,7 @@ const features: {
     icon: Headphones,
     label: "Technical Support",
     description:
-      "Compatibility guidance for Fuji, Agfa, Carestream, and other imagers — plus sizing and spec clarification.",
+      "Compatibility guidance for dry and thermal imagers, plus sizing and specification clarification.",
     tag: "Expert help",
   },
   {
@@ -82,7 +82,7 @@ export function WhyUsSection() {
           <div className="why-us-panel__intro-copy">
             <p className="why-us-panel__lead">
               From film selection to doorstep delivery, Vandan Distributors supports imaging departments with
-              materials and service aligned to real clinical pressure — not generic supplier promises.
+              materials and service aligned to real clinical pressure - not generic supplier promises.
             </p>
           </div>
           <ul className="why-us-highlights" aria-label="Company highlights">

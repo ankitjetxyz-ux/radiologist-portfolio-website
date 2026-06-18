@@ -10,7 +10,7 @@ export type DownloadItem = {
 export const downloads: DownloadItem[] = [
   {
     id: "main-brochure",
-    title: "Accurate Medical Product Brochure",
+    title: "Vandan Distributors Product Brochure",
     description: "Complete product catalogue covering contrast media, films, MIPS, and diagnostic consumables.",
     category: "catalogue",
     file: "/downloads/broucher-120825.pdf",

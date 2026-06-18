@@ -19,9 +19,9 @@ export default function ContrastMediaPage() {
   return (
     <PageShell>
       <PageHero
-        eyebrow="Accurate Contrast Media"
+        eyebrow="Vandan Distributors Contrast Media"
         title="Contrast Media"
-        description="A carefully curated range of X-ray, CT, MRI, and oral contrast agents supplied under Accurate Medical Solutions for modern diagnostic imaging workflows."
+        description="A carefully curated range of X-ray, CT, MRI, and oral contrast agents supplied under Vandan Distributors for modern diagnostic imaging workflows."
       />
 
       {contrastCategories.map((cat) => {
@@ -51,7 +51,7 @@ export default function ContrastMediaPage() {
       <section className="medical-section medical-section--alt">
         <SectionHeading
           title="Product specifications"
-          description="Detailed concentration and pack size reference for contrast media products available through Accurate Medical Solutions."
+          description="Detailed concentration and pack size reference for contrast media products available through Vandan Distributors."
         />
         <FadeIn>
           <Card className="glossy-card overflow-hidden border-0 ring-0">

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { site } from "@/content/site";
 
 export function SiteFooter() {
@@ -6,11 +7,14 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="site-footer__grid">
         <div className="site-footer__brand">
-          <strong>{site.brand.name}</strong>
+          <div className="site-footer__brand-lockup">
+            <Image src={site.brand.logo} alt={site.brand.name} width={56} height={56} />
+            <strong>{site.brand.name}</strong>
+          </div>
           <p>{site.footer}</p>
           <p className="site-footer__contact">
             <a href={site.brand.phoneHref}>{site.brand.phone}</a>
-            <span> · </span>
+            <span> / </span>
             <a href={site.brand.emailHref}>{site.brand.email}</a>
           </p>
         </div>

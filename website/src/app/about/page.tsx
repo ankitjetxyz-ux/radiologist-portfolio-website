@@ -19,7 +19,7 @@ export default function AboutPage() {
   return (
     <PageShell>
       <PageHero
-        eyebrow="About Accurate"
+        eyebrow="About Vandan Distributors"
         title="Radiology supplies built on clinical trust"
         description={site.about.overview}
       />
@@ -70,7 +70,7 @@ export default function AboutPage() {
           <div>
             <h2>Why customers trust us</h2>
             <p>
-              From contrast media supply to complete MIPS deployments, Accurate delivers end-to-end support with
+              From contrast media supply to complete MIPS deployments, Vandan Distributors delivers end-to-end support with
               transparent per-print pricing and responsive technical guidance.
             </p>
           </div>
