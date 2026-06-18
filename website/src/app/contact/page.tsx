@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { site } from "@/content/site";
 import { PageShell } from "@/components/PageShell";
@@ -36,7 +37,13 @@ export default function ContactPage() {
             <div className="contact-info">
               <Card className="contact-info-card glossy-card border-0 ring-0">
                 <CardHeader>
-                  <CardTitle className="text-xl font-bold">Company Details</CardTitle>
+                  <div className="contact-brand-lockup">
+                    <Image src={site.brand.logo} alt={site.brand.name} width={64} height={64} />
+                    <div>
+                      <CardTitle className="text-xl font-bold">Company Details</CardTitle>
+                      <p>{site.brand.name}</p>
+                    </div>
+                  </div>
                 </CardHeader>
                 <CardContent className="space-y-5">
                   <div className="contact-info-item">
@@ -80,9 +87,9 @@ export default function ContactPage() {
               <div className="contact-map-placeholder">
                 <iframe
                   title="Accurate Medical Solutions location"
-                  src="https://maps.google.com/maps?q=Ahmedabad,Gujarat,India&output=embed"
+                  src="https://maps.google.com/maps?q=14%20First%20Floor%2C%20Municipal%20Market%2C%20G.D%20Road%2C%20Opp.%20Maruti%20Nandan%20Complex%2C%20Vijay%20Para%2C%20Visnagar%2C%20Gujarat%20384315%2C%20India&output=embed"
                   width="100%"
-                  height="280"
+                  height="360"
                   style={{ border: 0, borderRadius: "16px" }}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"

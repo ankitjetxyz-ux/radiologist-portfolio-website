@@ -17,7 +17,7 @@ export default function ProductsPage() {
       <PageHero
         eyebrow="Product Catalogue"
         title="Complete radiology product range"
-        description="Browse our categories — from JB Pharma contrast media and Fuji/Agfa films to end-to-end medical imaging print solutions."
+        description="Browse our categories - from contrast media and diagnostic films to end-to-end medical imaging print solutions."
       />
 
       <section className="medical-section">

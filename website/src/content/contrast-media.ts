@@ -32,7 +32,7 @@ export const contrastCategories = [
   },
 ] as const;
 
-/** JB Pharma Radio Diagnostics product catalogue */
+/** Accurate Medical Solutions contrast media product catalogue */
 export const contrastProducts: ContrastProduct[] = [
   {
     id: "lek-pamidol",

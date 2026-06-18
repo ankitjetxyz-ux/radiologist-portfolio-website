@@ -70,7 +70,7 @@ export default function AboutPage() {
           <div>
             <h2>Why customers trust us</h2>
             <p>
-              From JB Pharma contrast media to complete MIPS deployments, Accurate delivers end-to-end support with
+              From contrast media supply to complete MIPS deployments, Accurate delivers end-to-end support with
               transparent per-print pricing and responsive technical guidance.
             </p>
           </div>

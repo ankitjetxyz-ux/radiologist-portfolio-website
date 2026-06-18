@@ -138,7 +138,7 @@ export function HomePage() {
           <FadeIn delay={0.15}>
             <div className="intro-visual">
               <Image
-                src="/images/brand/accurate-logo.jpg"
+                src={site.brand.logo}
                 alt="Accurate Medical Solutions"
                 width={280}
                 height={280}

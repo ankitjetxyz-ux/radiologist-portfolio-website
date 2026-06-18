@@ -2,12 +2,12 @@ export const site = {
   brand: {
     name: "Accurate Medical Solutions",
     shortName: "Accurate",
-    tagline: "Medical Imaging Print Solutions",
+    tagline: "Radiology & Imaging Solutions",
     title: "Accurate Medical Solutions | Radiology & Diagnostic Supplies",
     description:
       "Accurate Medical Solutions provides contrast media, X-ray films, medical imaging print solutions (MIPS), and diagnostic consumables for hospitals and diagnostic centres across India.",
-    logo: "/images/brand/accurate-logo.jpg",
-    ogImage: "/images/brand/accurate-logo.jpg",
+    logo: "/images/brand/logo.png",
+    ogImage: "/images/brand/logo.png",
     phone: "+91 810 810 0404",
     phoneAlt: "+91 91579 76333",
     phoneHref: "tel:+918108100404",
@@ -15,18 +15,18 @@ export const site = {
     emailHref: "mailto:info@accuratemedical.in",
     whatsappLink: "https://wa.me/918108100404",
     whatsappNumber: "918108100404",
-    mapsLink: "https://maps.app.goo.gl/yE4MPrEjbc2gkEC4A",
-    location: "Ahmedabad, Gujarat, India",
-    themeColor: "#0c4a6e",
-    accentColor: "#e85d26",
+    mapsLink: "https://www.google.com/maps/search/?api=1&query=14%20First%20Floor%2C%20Municipal%20Market%2C%20G.D%20Road%2C%20Opp.%20Maruti%20Nandan%20Complex%2C%20Vijay%20Para%2C%20Visnagar%2C%20Gujarat%20384315%2C%20India",
+    location: "14 First Floor, Municipal Market, G.D Road, Opp. Maruti Nandan Complex, Vijay Para, Visnagar, Gujarat 384315, India",
+    themeColor: "#183f37",
+    accentColor: "#c97943",
   },
 
   nav: [
     { label: "Home", href: "/" },
     { label: "About Us", href: "/about" },
     { label: "Products", href: "/products" },
-    { label: "Testimonials", href: "/testimonials" },
     { label: "Downloads", href: "/downloads" },
+    { label: "Testimonials", href: "/testimonials" },
     { label: "Contact", href: "/contact" },
   ] as const,
 
@@ -34,7 +34,7 @@ export const site = {
     { label: "Contrast Media", href: "/products/contrast-media" },
     { label: "X-Ray Films", href: "/products/x-ray-films" },
     { label: "Other Products", href: "/products/other-products" },
-    { label: "Printing Solutions", href: "/products/printing-solutions" },
+    { label: "Accurate Printing Solutions", href: "/products/printing-solutions" },
   ] as const,
 
   hero: {
@@ -65,7 +65,7 @@ export const site = {
     },
     {
       title: "Trusted Product Range",
-      body: "JB Pharma contrast media, Fuji & Agfa X-ray films, and a complete catalogue of diagnostic consumables.",
+      body: "Contrast media, diagnostic films, manual X-ray films, and a complete catalogue of radiology consumables under Accurate Medical Solutions guidance.",
     },
     {
       title: "Pan-India Reach",
@@ -96,7 +96,7 @@ export const site = {
       "Our leadership team brings decades of combined experience in medical imaging, radiology workflow software, and healthcare distribution — enabling us to advise on film compatibility, contrast selection, and MIPS deployment.",
     trustPoints: [
       "Preferred supplier for hospitals and diagnostic chains",
-      "Authorized distribution for JB Pharma contrast media",
+      "Curated contrast media portfolio for CT, MRI, angiography, and oral imaging workflows",
       "Fuji, Agfa, and VMS X-ray film availability",
       "End-to-end MIPS with software, printer, ink, and service",
     ],

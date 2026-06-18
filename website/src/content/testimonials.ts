@@ -38,8 +38,8 @@ export const testimonials: Testimonial[] = [
   {
     id: "contrast-supply",
     quote:
-      "Reliable supply of JB Pharma contrast media with competitive pricing and timely delivery. Accurate has become our preferred vendor for radiology consumables.",
-    author: "Pharmacy & Radiology",
+      "Reliable supply of contrast media with competitive pricing and timely delivery. Accurate has become our preferred vendor for radiology consumables.",
+    author: "Procurement & Radiology",
     role: "Purchase Head",
     facility: "Corporate Hospital Chain",
     modality: "Contrast Media",

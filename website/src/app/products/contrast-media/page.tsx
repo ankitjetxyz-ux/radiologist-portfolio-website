@@ -12,16 +12,16 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: `Contrast Media | ${site.brand.name}`,
-  description: "JB Pharma contrast media — non-ionic, ionic, iso-osmolar, and MRI contrast agents for CT, angiography, and MR imaging.",
+  description: "Contrast media portfolio - non-ionic, ionic, iso-osmolar, and MRI contrast agents for CT, angiography, and MR imaging.",
 };
 
 export default function ContrastMediaPage() {
   return (
     <PageShell>
       <PageHero
-        eyebrow="JB Pharma Radio Diagnostics"
+        eyebrow="Accurate Contrast Media"
         title="Contrast Media"
-        description="Complete range of X-ray, CT, MRI, and oral contrast agents from JB Pharma — India's #2 contrast media manufacturer with 30+ years of experience."
+        description="A carefully curated range of X-ray, CT, MRI, and oral contrast agents supplied under Accurate Medical Solutions for modern diagnostic imaging workflows."
       />
 
       {contrastCategories.map((cat) => {
@@ -51,7 +51,7 @@ export default function ContrastMediaPage() {
       <section className="medical-section medical-section--alt">
         <SectionHeading
           title="Product specifications"
-          description="Detailed concentration and pack size reference for JB Pharma contrast media products."
+          description="Detailed concentration and pack size reference for contrast media products available through Accurate Medical Solutions."
         />
         <FadeIn>
           <Card className="glossy-card overflow-hidden border-0 ring-0">
@@ -79,7 +79,7 @@ export default function ContrastMediaPage() {
         </FadeIn>
       </section>
 
-      <CTASection title="Need contrast media for your facility?" description="Contact us for pricing, availability, and bulk supply quotes for JB Pharma products." />
+      <CTASection title="Need contrast media for your facility?" description="Contact us for pricing, availability, and bulk supply quotes for contrast media products." />
     </PageShell>
   );
 }
